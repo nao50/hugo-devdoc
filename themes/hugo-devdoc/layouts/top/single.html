@@ -1,0 +1,149 @@
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+<!-- title section -->
+<section class="hero is-medium top-title-section">
+  <div class="hero-body">
+    <div class="container">
+      
+      <div class="columns is-mobile is-multiline is-centered">
+
+        {{ range where .Site.Pages "Section" "top" }}
+          {{ range first 1 (.Pages.ByWeight) }}
+
+          <div class="column is-12-mobile is-12-tablet is-6-desktop is-6-fullhd rellax" data-rellax-speed="-1">
+            <h1 class="title intro-title top-title">{{ .Title }}</h1>
+            <p class="subtitle has-text-centered top-subtitle">{{ .Params.subtitle }}</p>
+          </div>
+
+          <div class="column is-12-mobile is-12-tablet is-8-desktop is-8-fullhd rellax" data-rellax-speed="-1">
+            <p class="control has-icons-left">
+              <input class="input is-rounded is-large is-primary" type="text" placeholder="Search docs...">
+              <span class="icon is-large is-left">
+                <i class="fas fa-search"></i>
+              </span>
+            </p>
+          </div>
+
+          {{ end }}
+        {{ end }}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- event section -->
+<section class="hero is-medium top-event-section">    
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide slide1"></div>
+      <div class="swiper-slide slide2"></div>
+      <div class="swiper-slide slide3"></div>
+    </div>
+    
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+<!-- changelog section -->
+{{ with .GitInfo }}
+  <h3 class="subtitle is-6">{{$.Page.Site.Params.latest}}</h3>
+  <div class="content">
+    <a href="{{$.Page.Site.Params.repourl}}/commit/{{.GitInfo.Hash}}">{{$.Page.Lastmod}}</a>
+  </div>
+{{ end }}
+
+
+<!-- feature section -->
+<section class="section top-feature-section" id="feature">
+  <div class="feature-title">Feature</div>
+  <p class="feature-subtitle">この商品の特徴を活かしてあなたの生活を豊かにします</p>
+  <p class="feature-link">
+    <a href="#contact">
+      この特徴について問い合わせる
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </p>
+
+  <div class="container">
+    <div class="columns">
+      {{ range where .Site.Pages "Section" "features" }}
+        {{ range first 3 (.Pages.ByWeight) }}
+          <div class="column animated bounce">
+
+              <div class="card card-equal-height rellax" data-rellax-speed="0">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    {{ with .Params.image }}
+                      <img src="{{ . }}" alt="Features image">
+                    {{end}}
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <p class="title has-text-centered">{{ .Title }}</p>
+                  <p class="subtitle has-text-centered">{{ .Params.subtitle }}</p>
+                  <div class="content">
+                    <p>{{ .Params.description }}</p>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+
+<!-- component section -->
+<section class="section is-small top-component-section" id="casestudy">
+  <div class="component-title">Casestudy</div>
+  <p class="component-subtitle">この商品はたくさん利用されています</p>
+  <p class="component-link">
+    <a href="#contact">
+      この事例について問い合わせる
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </p>
+
+  <div class="container">
+    <div class="columns">
+      {{ range where .Site.Pages "Section" "casestudys" }}
+        {{ range first 3 (.Pages.ByWeight) }}
+
+        <div class="column is-12-mobile is-12-tablet is-4-desktop is-4-fullhd　animated bounce">
+          <div class="card card-equal-height has-text-centered">
+            <div class="card-image">
+              <figure class="image-circle">
+                {{ with .Params.image }}
+                  <img src="{{ . }}" alt="Features image">
+                {{end}}
+              </figure>
+            </div>
+
+            <div class="card-content">
+              <p class="title has-text-dark is-4">{{ .Params.company }}</p>
+              <p class="subtitle has-text-dark is-5">{{ .Title }}</p>
+              <p>{{ .Params.description }}</p>
+
+              <a class="button is-primary is-outlined is-fullwidth contact-button" href="#contact">Contact</a>
+            </div>
+          </div>
+      </div>
+
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+
+
+</section>
+
+
+{{ partial "footer.html" . }}

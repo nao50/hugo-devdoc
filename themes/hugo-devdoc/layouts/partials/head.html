@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!-- <html lang="ja" class="has-navbar-fixed-top"> -->
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ .Site.Title | safeHTML }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@XXXXXXXXXXXXXX">
+    <meta name="twitter:description" content="{{ if not (eq .Title .Site.Title) }}{{ .Title | safeHTML }}{{ else }}XXXXXXXXXXXXXX{{ end }}">
+    <meta name="twitter:title" content="{{ .Site.Title | safeHTML }}">
+    <meta name="twitter:image" content='{{ "/images/ogp.png" | absURL }}'>
+    <meta property="fb:app_id" content="">
+    <meta property="og:site_name" content="{{ .Site.Title | safeHTML }}">
+    <meta property="og:description"
+          content="{{ if not (eq .Title .Site.Title) }}{{ .Title | safeHTML }}{{ else }}XXXXXXXXXXXXXX{{ end }}">
+    <meta property="og:image" content='{{ "/images/ogp.png" | absURL }}'>
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="630">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="ja_jp">
+    <meta property="og:title" content="{{ .Site.Title | safeHTML }}">
+    <meta property="og:type" content="article">
+    <meta property="article:publisher" content="https://www.facebook.com/XXXXXXXXXXXXXX.jp">
+    <meta property="og:url" content='{{ .Permalink }}'>
+    <link rel="canonical" href='{{ .Permalink }}'>
+    <link href='{{ "/favicon.png" | absURL }}' rel="icon">
+    <title>{{ if not (eq .Title .Site.Title) }}{{ .Title }} &ndash;{{ end }} {{ .Site.Title }}</title>
+
+    <!-- bulma scss -->
+    {{ $styles := resources.Get "bulma.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
+    {{ $styles2 := resources.Get "bulma-custom.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $styles2.RelPermalink }}">
+
+    <!-- font awesome -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet"> -->
+    <script src="https://kit.fontawesome.com/be3c4f1109.js" crossorigin="anonymous"></script>
+
+    <!-- Animation.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+    <!-- swiper css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/css/swiper.min.css">
+
+    <!-- swiper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
+
+    <!-- rellax.js -->
+    <script src="{{ .Site.BaseURL }}/js/rellax.js"></script>
+
+    <!-- js -->
+    <script src="{{ .Site.BaseURL }}/js/index.js"></script>
+
+    {{ with .OutputFormats.Get "rss" -}}
+        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    {{ end -}}
+</head>
+<body class="has-navbar-fixed-top">

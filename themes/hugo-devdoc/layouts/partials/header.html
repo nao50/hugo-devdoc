@@ -1,0 +1,57 @@
+<!-- <nav id="navbar" class="navbar is-primary has-shadow is-spaced is-fixed-top"> -->
+<nav id="navbar" class="navbar is-primary is-spaced is-fixed-top">
+  <div class="container">
+      <div class="navbar-brand">
+
+
+          <a class="navbar-item is-hidden-touch" href="/">
+              <!-- <img src="/images/logo.png" alt=""> -->
+            <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="">
+          </a>
+
+          <!-- <div class="navbar-start is-hidden-touch">
+              <h1 class="title is-4">
+                  <a class="navbar-item" href="/">
+                      HUGO DEV DOC
+                  </a>
+              </h1>
+          </div> -->
+
+
+          <a class="navbar-item is-hidden-desktop" href="/">
+            <img src="https://bulma.io/images/bulma-logo.png" alt="">
+          </a>
+
+          <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+
+      </div>
+
+      <div class="navbar-menu" id="navMenu">
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-danger" href="https://example.com" target="_blank">
+                <i class="fa fa-wrench"></i>&nbsp;EXAMPLE
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-navbar-sectionnav">
+          <div class="navbar-start">
+            {{ partial "sidemenu.html" . }}
+          </div>
+        </div>
+
+
+        
+      </div>
+
+
+  </div>
+</nav>

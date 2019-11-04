@@ -1,0 +1,50 @@
+// 1. Import the initial variables
+@import "./sass/utilities/initial-variables";
+@import "./sass/utilities/functions";
+
+// 2. Set your own initial variables
+$blue: #74a8b5;
+$blue-invert: #fff;
+$pink: #ca726d;
+$pink-invert: #fff;
+$green: #acb97e;
+$green-invert: #fff;
+$yellow: #f1edbd;
+$yellow-invert: #fff;
+
+// $family-serif: "Roboto", "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", sans-serif;
+$family-serif: Roboto,"Helvetica Neue",sans-serif;
+$family-monospace: "Roboto Mono", monospace;
+$family-code: $family-monospace;
+$footer-padding: 1.5rem 1.5rem 3rem !default;
+
+// 3. Set the derived variables
+$primary: $blue;
+$primary-invert: $blue-invert;
+$success: $green;
+$success-invert: $green-invert;
+$danger: $pink;
+$danger-invert: $pink-invert;
+
+$family-primary: $family-serif;
+
+$navbar-item-color: #000000;
+$navbar-item-active-color: $primary-invert;
+$navbar-dropdown-arrow: $white;
+
+
+// 4. Setup your Custom Colors
+$linkedin: #0077b5;
+$linkedin-invert: findColorInvert($linkedin);
+$twitter: #55acee;
+$twitter-invert: findColorInvert($twitter);
+$github: #333;
+$github-invert: findColorInvert($github);
+
+
+// 5. Add new color variables to the color map.
+@import "./sass/utilities/derived-variables";
+
+// 6. Import the rest of Bulma
+@import "./bulma";
+@import "./styles";

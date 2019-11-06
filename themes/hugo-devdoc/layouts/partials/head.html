@@ -54,6 +54,9 @@
     <!-- js -->
     <script src="{{ .Site.BaseURL }}/js/index.js"></script>
 
+    <!-- shuffle -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Shuffle/5.2.3/shuffle.js"></script>
+
     {{ with .OutputFormats.Get "rss" -}}
         {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end -}}

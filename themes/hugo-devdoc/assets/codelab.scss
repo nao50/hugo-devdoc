@@ -1,0 +1,85 @@
+////////////////////////////////////////////////////////////////////////////////////////////
+// codelab section
+.codelab-section {
+  background: #ffffff;
+
+  .codelab-title {
+    font-size: 40px;
+    letter-spacing: -0.5px;
+    line-height: 52px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+  }
+  .codelab-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 16px 0px 8px 0px;
+    letter-spacing: -0.5px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+  }
+
+  .codelab-filters {
+    padding: 24px 0;
+    // padding: 24px 0 36px 0;
+  }
+
+
+  .select {
+    width: 100%;
+    select {
+      width: 100%;
+    }
+  }
+
+  .card {   
+    transition: all 0.3s;
+    border-bottom: 4px solid $primary;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  .card-content {
+    padding: 1.5rem 1.5rem 1.0rem 1.5rem;
+
+    .media {
+      margin-bottom: 12px;
+    }
+  }
+  .card-equal-height {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .card-equal-height .card-footer {
+    margin-top: auto;
+  }
+
+  .codelab-card-duration {
+    color: #aaa;
+    font-size: 11px;
+    mix-blend-mode: normal;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 6px;
+  }
+
+  .codelab-card-footer {
+    -ms-flex-align: center;
+    -ms-flex-pack: justify;
+    -webkit-align-items: center;
+    align-items: center;
+    border-top: 0;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 18px;
+
+    .tag {
+      margin-right: 8px;
+    }
+  }
+  
+}
+

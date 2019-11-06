@@ -44,7 +44,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////////
 // event section
 .top-event-section {
-  height: 400px;
+  // height: 400px;
+  height: 256px;
   background: #f7f7f7;
   color: #4a5960;
 
@@ -121,5 +122,219 @@
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////
+// categories section
+.top-information-section {
+  background: #ffffff;
+
+  .information-title {
+    font-size: 40px;
+    letter-spacing: -0.5px;
+    line-height: 52px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+  }
+
+  .information-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 16px 0px 8px 0px;
+    letter-spacing: -0.5px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+  }
+
+  .feature-link {
+    color: #3273dc;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 8px 0px 42px 0px;
+    letter-spacing: -0.5px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+    :visited {
+        color: #3273dc;
+    }
+  }
+
+  // FIX
+  .changelog-list {
+    cursor: pointer;
+    padding: 7px 24px 7px 16px;
+    align-items: center;
+    border-right: 0;
+    font-size: 24px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+    background-color: #e6e6e6;
+    border-left: 4px solid #74a8b5;
+  }
+
+  .changelog-header-inner {
+    margin-left: 12px;
+    color: #006cb7;
+  }
+  .changelog-header-date {
+    font-size: 18px;
+    margin-right: 1rem;
+    margin-left: auto;
+    color: #006cb7;
+  }
+  .changelog-header-date:hover {
+    color: #006cb7;
+  }
+
+}
 
 
+////////////////////////////////////////////////////////////////////////////////////////////
+// document section
+.top-document-section {
+  .document-title {
+    font-size: 40px;
+    letter-spacing: -0.5px;
+    line-height: 52px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+  }
+  .document-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 16px 0px 8px 0px;
+    letter-spacing: -0.5px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+  }
+  .document-link {
+    color: #34cdd7;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 8px 0px 32px 0px;
+    letter-spacing: -0.5px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+    :visited {
+        color: #34cdd7;
+    }
+  }
+
+  .card{   
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 0.5rem;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s;
+  }
+  .card:hover {
+    -webkit-box-shadow: 0 4px 4px rgba(1,67,163,.24), 0 0 4px rgba(1,67,163,.12), 0 6px 18px rgba(43,133,231,.12);
+    box-shadow: 0 4px 4px rgba(1,67,163,.24), 0 0 4px rgba(1,67,163,.12), 0 6px 18px rgba(43,133,231,.12);
+    -webkit-transform: translate3d(0,-2px,0);
+    transform: translate3d(0,-2px,0);
+  }
+
+  .card img{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 30px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 0.5rem;
+    max-width: 96.5%;
+    max-height: 96.5%;
+    margin: 0 auto;
+    margin-top: -3.5%;
+  }
+  .card-equal-height {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .card-equal-height .card-footer {
+    margin-top: auto;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// codelab section
+.top-codelab-section {
+  background: #ffffff;
+
+  .codelab-title {
+    font-size: 40px;
+    letter-spacing: -0.5px;
+    line-height: 52px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+  }
+  .codelab-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 16px 0px 8px 0px;
+    letter-spacing: -0.5px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+  }
+  .codelab-link {
+    color: $primary;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 8px 0px 32px 0px;
+    letter-spacing: -0.5px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+    :visited {
+        color: $primary;
+    }
+  }
+
+  .card{   
+    transition: all 0.3s;
+    border-bottom: 4px solid $primary;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+
+  .card-content {
+    padding: 1.5rem 1.5rem 1.0rem 1.5rem;
+
+    .media {
+      margin-bottom: 12px;
+    }
+  }
+  .card-equal-height {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .card-equal-height .card-footer {
+    margin-top: auto;
+  }
+
+  .codelab-card-duration {
+    color: #aaa;
+    font-size: 11px;
+    mix-blend-mode: normal;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 6px;
+  }
+
+  .codelab-card-footer {
+    -ms-flex-align: center;
+    -ms-flex-pack: justify;
+    -webkit-align-items: center;
+    align-items: center;
+    border-top: 0;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding-top: 18px;
+
+    .tag {
+      margin-right: 8px;
+    }
+  }
+  
+}

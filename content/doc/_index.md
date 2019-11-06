@@ -1,0 +1,4 @@
+---
+title: Doc
+type: doc
+---

@@ -26,10 +26,17 @@
                 </div>
               </nav>
 
-              <div class="column is-half">
-                <h1>bbb</h1><br><h1>bbb</h1><br><h1>bbb</h1><br><h1>bbb</h1><br><h1>bbb</h1><br><h1>bbb</h1><br><h1>bbb</h1><br><h1>bbb</h1><br><h1>bbb</h1><br><h1>bbb</h1><br>
+                <div class="column">
+                  <nav class="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
+                    <ul>
+                      {{- template "breadcrumb" (dict "node" . "start" .) }}
+                    </ul>
+                  </nav>
 
-              </div>
+                  <h1>{{ .Title }}</h1>
+
+                  {{ .Content }}
+                </div>
 
             </div>
           </div>

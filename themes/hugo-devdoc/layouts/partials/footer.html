@@ -67,16 +67,46 @@
 </script>
 
 <script>
+  var scroll = new SmoothScroll('a[href*="#"]', {
+    // offset: 90,
+    header: '#navbar',
+	  speed: 500,
+    speedAsDuration: true
+  });
+</script>
+
+<script>
   function search(query) {
     query = query.trim();
-    console.log('query: ', query);
+    // console.log('$query:', query);
+    const $catfil = Array.prototype.slice.call(document.querySelectorAll('.cat-filter'), 0);
+    if ($catfil.length > 0) {
+      $catfil.forEach( el => {
+        cat = el.getAttribute('cat')
+        var result = cat.split(',');
+        // console.log( 'result: ', result );
+      });
+    }
   }
+</script>
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   window.demo = new Demo(document.getElementById('grid'));
-// });
-  
+<script>
+  // var path = location.pathname.split('/');
+  // var $p2 = document.querySelectorAll('.' + path[2]);
+  // if ($p2.length > 0) {
+  //   $p2.forEach( el => {
+  //     el.classList.add('is-active');
+  //   });
+  // }
 
+  // console.log('hash:', location.hash);
+  // var $p3 = document.querySelectorAll('.' + path[3]);
+  // if ($p3.length > 0) {
+  //   $p3.forEach( el => {
+  //     el.classList.add('is-active');
+  //     el.classList.add('is-current');
+  //   });
+  // }
 </script>
 
 </body>

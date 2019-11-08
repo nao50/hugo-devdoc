@@ -1,4 +1,70 @@
 <nav id="categories" class="bd-categories">
+  {{ $currentPage := . }}
+  {{ range .Site.Menus.sidemenu.ByWeight }}
+    <div class="bd-category {{ if $currentPage.HasMenuCurrent "sidemenu" . }}is-active{{ end }}">
+      <header class="bd-category-header">
+        <a class="bd-category-toggle">
+          <span class="icon">
+            <i class="fas fa-chevron-down"></i>
+          </span>
+        </a>
+        <a class="bd-category-name " href="{{ .URL }}">
+          <strong>{{ .Name }}</strong>
+        </a>
+      </header>
+      <ul class="bd-category-list">
+        {{ if .HasChildren }}
+          {{ range .Children.ByWeight }}
+            <li class="{{ if $currentPage.IsMenuCurrent "sidemenu" . }}is-current{{ end }}">
+              <a class="nav-item" href="{{ .URL }}">
+                {{ .Name }}
+              </a>
+            </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    </div>
+  {{ end }}
+</nav>
+
+
+
+<!--  ファイルから自動生成するメニュー -->
+<!-- <nav id="categories" class="bd-categories">
+  {{ range where .Site.Pages "Section" "doc" }}
+    {{ range .Sections.ByWeight }}
+      <div class="bd-category {{ .Params.path }}">
+        <header class="bd-category-header">
+          <a class="bd-category-toggle">
+            <span class="icon">
+              <i class="fas fa-chevron-down"></i>
+            </span>
+          </a>
+          <a class="bd-category-name " href="{{ .Permalink }}">
+            <strong>{{ .Title }}</strong>
+          </a>
+        </header>
+
+        <ul class="bd-category-list">
+          {{ range .Pages.ByWeight }}
+            <li class="{{ . }}">
+              <a class="nav-item" href="{{ .Permalink }}">
+                {{ .Title }}
+              </a>
+            </li>
+          {{ end }}
+        </ul>
+      </div>
+    {{ end }}
+  {{ end }}
+</nav> -->
+
+
+
+<!--  -->
+<!--  -->
+
+<!-- <nav id="categories" class="bd-categories">
   
     <div class="bd-category">
       <header class="bd-category-header">
@@ -15,7 +81,6 @@
       <ul class="bd-category-list">  
           <li>
             <a class="nav-item" href="https://bulma.io/documentation/overview/start">
-            <!-- <a href="https://bulma.io/documentation/overview/start"> -->
               Start
             </a>
           </li>
@@ -424,4 +489,4 @@
       </ul>
     </div>
   
-</nav>
+</nav> -->

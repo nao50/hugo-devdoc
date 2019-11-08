@@ -1,3 +1,5 @@
+'use strict';
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // TOP navbar menu
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // 20191031 bulma site's js
 document.addEventListener('DOMContentLoaded', () => {
   // Cookies
-  // var cookieBookModalName = 'bulma_closed_book_modal';
+  var cookieBookModalName = 'bulma_closed_book_modal';
   // var cookieBookModal = Cookies.getJSON(cookieBookModalName) || false;
 
   // Sidebar links
@@ -27,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if ($categories.length > 0) {
     $categories.forEach(function (el) {
       var toggle_el = el.querySelector('.bd-category-toggle');
-
       toggle_el.addEventListener('click', function (event) {
         // closeCategories(el);
         el.classList.toggle('is-active');
@@ -35,14 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function closeCategories(current_el) {
-    $categories.forEach(function (el) {
-      if (current_el == el) {
-        return;
-      }
-      el.classList.remove('is-active');
-    });
-  }
+
+  // function closeCategories(current_el) {
+  //   $categories.forEach(function (el) {
+  //     if (current_el == el) {
+  //       return;
+  //     }
+  //     el.classList.remove('is-active');
+  //   });
+  // }
 
   var anchors_ref_el = document.getElementById('anchorsReference');
   var anchors_el = document.getElementById('anchors');
@@ -285,7 +287,8 @@ document.addEventListener('DOMContentLoaded', () => {
   var navbarEl = document.getElementById('navbar');
   var navbarBurger = document.getElementById('navbarBurger');
   var specialShadow = document.getElementById('specialShadow');
-  var NAVBAR_HEIGHT = 52;
+  // var NAVBAR_HEIGHT = 52;
+  var NAVBAR_HEIGHT = 90;
   var THRESHOLD = 160;
   var horizon = NAVBAR_HEIGHT;
   var whereYouStoppedScrolling = 0;
@@ -297,22 +300,24 @@ document.addEventListener('DOMContentLoaded', () => {
   var past_anchors = [];
   anchor_links_el.reverse();
   var trigger_offset = 24; // In pixels
-  var typo_el = document.getElementById('typo');
+  // var typo_el = document.getElementById('typo');
 
   function whenScrolling() {
     if (anchors_ref_el) {
       var bounds = anchors_ref_el.getBoundingClientRect();
       var anchors_height = anchors_el.clientHeight;
-      var typo_bounds = typo_el.getBoundingClientRect();
-      var typo_height = typo_el.clientHeight;
+      // var typo_bounds = typo_el.getBoundingClientRect();
+      // var typo_height = typo_el.clientHeight;
 
-      if (bounds.top < 1 && typo_bounds.top - anchors_height + typo_height > 0) {
-        anchors_el.classList.add('is-pinned');
-      } else {
-        anchors_el.classList.remove('is-pinned');
-      }
+      // if (bounds.top < 1 && typo_bounds.top - anchors_height + typo_height > 0) {
+      //   anchors_el.classList.add('is-pinned');
+      // } else {
+      //   anchors_el.classList.remove('is-pinned');
+      // }
+
 
       anchor_links_el.some(function (el) {
+        console.log('CCCCCCCCC')
         var bounds = el.getBoundingClientRect();
         var href = el.getAttribute('href');
         var key = href.substring(1); // #target -> target
@@ -465,317 +470,51 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 });
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+// smooth scroll 
+// document.addEventListener('DOMContentLoaded', () => {
+//   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+//     anchor.addEventListener('click', function (e) {
+//       e.preventDefault();
+
+//       document.querySelector(this.getAttribute('href')).scrollIntoView({
+//         block: "start",
+//         behavior: 'smooth'
+//       });
+
+
+//       // document.querySelector(this.getAttribute('href')).scrollTop += 85;
+
+
+//       // var element = document.querySelector(this.getAttribute('href'));
+//       // var headerOffset = 85;
+//     	// var elementPosition = element.getBoundingClientRect().top;
+//       // var offsetPosition = elementPosition - headerOffset;
+      
+//       // window.scrollTo({
+//       //     top: offsetPosition,
+//       //     behavior: "smooth"
+//       // });
+
+//     });
+//   });
+// });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // codelab filter
-// const shuffleInstance = new Shuffle(document.getElementById('grid'), {
-//   itemSelector: '.js-item',
-//   sizer: '.js-shuffle-sizer'
-// });
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  window.codelabfilter = new CodelabFilter(document.getElementById('grid'));
-});
-
-class CodelabFilter {
-
-  constructor(element) {
-    this.element = element;
-    this.shuffle = new Shuffle(element, {
-      itemSelector: '.picture-item',
-      sizer: element.querySelector('.my-sizer-element'),
-    });
-
-    // Log events.
-    this.addShuffleEventListeners();
-    this._activeFilters = [];
-    this.addFilterButtons();
-    this.addSorting();
-    this.addSearchFilter();
-  }
-
-  /**
-   * Shuffle uses the CustomEvent constructor to dispatch events. You can listen
-   * for them like you normally would (with jQuery for example).
-   */
-  addShuffleEventListeners() {
-    this.shuffle.on(Shuffle.EventType.LAYOUT, (data) => {
-      console.log('layout. data:', data);
-    });
-    this.shuffle.on(Shuffle.EventType.REMOVED, (data) => {
-      console.log('removed. data:', data);
-    });
-  }
-
-  addFilterButtons() {
-    const options = document.querySelector('.filter-options');
-    if (!options) {
-      return;
-    }
-    
-    const filterButtons = Array.from(options.children);
-    const onClick = this._handleFilterClick.bind(this);
-    filterButtons.forEach((button) => {
-      button.addEventListener('click', onClick, false);
-    });
-  }
-
-  _handleFilterClick(evt) {
-    const btn = evt.currentTarget;
-    const isActive = btn.classList.contains('active');
-    const btnGroup = btn.getAttribute('data-group');
-    
-    this._removeActiveClassFromChildren(btn.parentNode);
-    
-    let filterGroup;
-    if (isActive) {
-      btn.classList.remove('active');
-      filterGroup = Shuffle.ALL_ITEMS;
-    } else {
-      btn.classList.add('active');
-      filterGroup = btnGroup;
-    }
-    
-    this.shuffle.filter(filterGroup);
-  }
-
-  _removeActiveClassFromChildren(parent) {
-    const { children } = parent;
-    for (let i = children.length - 1; i >= 0; i--) {
-      children[i].classList.remove('active');
-    }
-  }
-
-  addSorting() {
-    const buttonGroup = document.querySelector('.sort-options');
-    if (!buttonGroup) {
-      return;
-    }
-    buttonGroup.addEventListener('change', this._handleSortChange.bind(this));
-  }
-
-  _handleSortChange(evt) {
-    // Add and remove `active` class from buttons.
-    const buttons = Array.from(evt.currentTarget.children);
-    buttons.forEach((button) => {
-      if (button.querySelector('input').value === evt.target.value) {
-        button.classList.add('active');
-      } else {
-        button.classList.remove('active');
-      }
-    });
-    
-    // Create the sort options to give to Shuffle.
-    const { value } = evt.target;
-    let options = {};
-    
-    function sortByDate(element) {
-      return element.getAttribute('data-created');
-    }
-    
-    function sortByTitle(element) {
-      return element.getAttribute('data-title').toLowerCase();
-    }
-    
-    if (value === 'date-created') {
-      options = {
-        reverse: true,
-        by: sortByDate,
-      };
-    } else if (value === 'title') {
-      options = {
-        by: sortByTitle,
-      };
-    }
-    this.shuffle.sort(options);
-  }
-
-  // Advanced filtering
-  addSearchFilter() {
-    const searchInput = document.querySelector('.js-shuffle-search');
-    if (!searchInput) {
-      return;
-    }
-    searchInput.addEventListener('keyup', this._handleSearchKeyup.bind(this));
-  }
-
-  /**
-   * Filter the shuffle instance by items with a title that matches the search input.
-   * @param {Event} evt Event object.
-   */
-  _handleSearchKeyup(evt) {
-    const searchText = evt.target.value.toLowerCase();
-    this.shuffle.filter((element, shuffle) => {
-      // If there is a current filter applied, ignore elements that don't match it.
-      if (shuffle.group !== Shuffle.ALL_ITEMS) {
-        // Get the item's groups.
-        const groups = JSON.parse(element.getAttribute('data-groups'));
-        const isElementInCurrentGroup = groups.indexOf(shuffle.group) !== -1;
-        // Only search elements in the current group
-        if (!isElementInCurrentGroup) {
-          return false;
-        }
-      }
-      const titleElement = element.querySelector('.picture-item__title');
-      const titleText = titleElement.textContent.toLowerCase().trim();
-      return titleText.indexOf(searchText) !== -1;
-    });
-  }
-
-}
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////
-
 // document.addEventListener('DOMContentLoaded', () => {
-//   window.demo = new Demo(document.getElementById('grid'));
+//   const $cat = Array.prototype.slice.call(document.querySelectorAll('.cat-filter'), 0);
+//   // console.log('$cat:', $cat);
+//   if ($cat.length > 0) {}
+//   // if ($cat.length > 0) {
+//   //   $cat.forEach( el => {
+//   //     el.addEventListener('click', () => {
+//   //       const target = el.dataset.target;
+//   //       const $target = document.getElementById(target);
+//   //       el.classList.toggle('is-active');
+//   //       $target.classList.toggle('is-active');
+//   //     });
+//   //   });
+//   // }
 // });
 
-// class Demo {
-
-//   constructor(element) {
-//     this.element = element;
-//     this.shuffle = new Shuffle(element, {
-//       itemSelector: '.picture-item',
-//       sizer: element.querySelector('.my-sizer-element'),
-//     });
-
-//     // Log events.
-//     this.addShuffleEventListeners();
-//     this._activeFilters = [];
-//     this.addFilterButtons();
-//     this.addSorting();
-//     this.addSearchFilter();
-//   }
-
-//   /**
-//    * Shuffle uses the CustomEvent constructor to dispatch events. You can listen
-//    * for them like you normally would (with jQuery for example).
-//    */
-//   addShuffleEventListeners() {
-//     this.shuffle.on(Shuffle.EventType.LAYOUT, (data) => {
-//       console.log('layout. data:', data);
-//     });
-//     this.shuffle.on(Shuffle.EventType.REMOVED, (data) => {
-//       console.log('removed. data:', data);
-//     });
-//   }
-
-//   addFilterButtons() {
-//     const options = document.querySelector('.filter-options');
-//     if (!options) {
-//       return;
-//     }
-    
-//     const filterButtons = Array.from(options.children);
-//     const onClick = this._handleFilterClick.bind(this);
-//     filterButtons.forEach((button) => {
-//       button.addEventListener('click', onClick, false);
-//     });
-//   }
-
-//   _handleFilterClick(evt) {
-//     const btn = evt.currentTarget;
-//     const isActive = btn.classList.contains('active');
-//     const btnGroup = btn.getAttribute('data-group');
-    
-//     this._removeActiveClassFromChildren(btn.parentNode);
-    
-//     let filterGroup;
-//     if (isActive) {
-//       btn.classList.remove('active');
-//       filterGroup = Shuffle.ALL_ITEMS;
-//     } else {
-//       btn.classList.add('active');
-//       filterGroup = btnGroup;
-//     }
-    
-//     this.shuffle.filter(filterGroup);
-//   }
-
-//   _removeActiveClassFromChildren(parent) {
-//     const { children } = parent;
-//     for (let i = children.length - 1; i >= 0; i--) {
-//       children[i].classList.remove('active');
-//     }
-//   }
-
-//   addSorting() {
-//     const buttonGroup = document.querySelector('.sort-options');
-//     if (!buttonGroup) {
-//       return;
-//     }
-//     buttonGroup.addEventListener('change', this._handleSortChange.bind(this));
-//   }
-
-//   _handleSortChange(evt) {
-//     // Add and remove `active` class from buttons.
-//     const buttons = Array.from(evt.currentTarget.children);
-//     buttons.forEach((button) => {
-//       if (button.querySelector('input').value === evt.target.value) {
-//         button.classList.add('active');
-//       } else {
-//         button.classList.remove('active');
-//       }
-//     });
-    
-//     // Create the sort options to give to Shuffle.
-//     const { value } = evt.target;
-//     let options = {};
-    
-//     function sortByDate(element) {
-//       return element.getAttribute('data-created');
-//     }
-    
-//     function sortByTitle(element) {
-//       return element.getAttribute('data-title').toLowerCase();
-//     }
-    
-//     if (value === 'date-created') {
-//       options = {
-//         reverse: true,
-//         by: sortByDate,
-//       };
-//     } else if (value === 'title') {
-//       options = {
-//         by: sortByTitle,
-//       };
-//     }
-//     this.shuffle.sort(options);
-//   }
-
-//   // Advanced filtering
-//   addSearchFilter() {
-//     const searchInput = document.querySelector('.js-shuffle-search');
-//     if (!searchInput) {
-//       return;
-//     }
-//     searchInput.addEventListener('keyup', this._handleSearchKeyup.bind(this));
-//   }
-
-//   /**
-//    * Filter the shuffle instance by items with a title that matches the search input.
-//    * @param {Event} evt Event object.
-//    */
-//   _handleSearchKeyup(evt) {
-//     const searchText = evt.target.value.toLowerCase();
-//     this.shuffle.filter((element, shuffle) => {
-//       // If there is a current filter applied, ignore elements that don't match it.
-//       if (shuffle.group !== Shuffle.ALL_ITEMS) {
-//         // Get the item's groups.
-//         const groups = JSON.parse(element.getAttribute('data-groups'));
-//         const isElementInCurrentGroup = groups.indexOf(shuffle.group) !== -1;
-//         // Only search elements in the current group
-//         if (!isElementInCurrentGroup) {
-//           return false;
-//         }
-//       }
-//       const titleElement = element.querySelector('.picture-item__title');
-//       const titleText = titleElement.textContent.toLowerCase().trim();
-//       return titleText.indexOf(searchText) !== -1;
-//     });
-//   }
-// }

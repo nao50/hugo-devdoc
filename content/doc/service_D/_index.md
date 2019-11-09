@@ -4,6 +4,5 @@ subtitle: Service D is D service
 description: This service is D
 image: https://bulma.io/images/placeholders/128x128.png
 type: service_d
-url: "/services/service_d/overview/"
-weight: 10
+url: "/doc/service_d/overview/"
 ---

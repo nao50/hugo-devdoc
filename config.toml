@@ -2,7 +2,7 @@ baseURL = "http://localhost:1313"
 languageCode = "en-us"
 title = "Home"
 enableGitInfo = true
-
+pygmentsCodeFences = true
 [taxonomies]
   category = "categories"
   level = "level"

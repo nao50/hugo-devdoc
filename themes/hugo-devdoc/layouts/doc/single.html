@@ -16,27 +16,30 @@
     <article class="column doc-article">
       <article class="columns is-mobile is-variable">
 
-        <div class="column is-three-quarters">
+        <div class="column is-full-touch is-three-quarters-desktop is-three-quarters-fullhd">
           <div class="content">
             <div class="columns is-multiline is-half">
 
-              <nav class="column doc-pagenav-embedded is-full">
-                <div class="content">
-                {{ partial "sidenav.html" . }}
-                </div>
-              </nav>
+              <div class="column">
+                <nav class="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
+                  <ul>
+                    {{- template "breadcrumb" (dict "node" . "start" .) }}
+                  </ul>
+                </nav>
+                <h1>{{ .Title }}</h1>
 
-                <div class="column">
-                  <nav class="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
-                    <ul>
-                      {{- template "breadcrumb" (dict "node" . "start" .) }}
-                    </ul>
+                <nav class="column doc-pagenav-embedded is-full">
+                  <nav class="doc-pagenav-inner-embedded">
+                    <div class="doc-pagenav-content">
+                    {{ partial "sidenav.html" . }}
+                    </div>
                   </nav>
+                </nav>
 
-                  <h1>{{ .Title }}</h1>
+                <!-- {{ .Content }} -->
+                {{ .Content | replaceRE "(<h[1-9] id=\"([^\"]+)\".+)(</h[1-9]+>)" "${1}&nbsp;<a class=\"h-hash\" href=\"#${2}\">#</a> ${3}" | safeHTML }}
 
-                  {{ .Content }}
-                </div>
+              </div>
 
             </div>
           </div>

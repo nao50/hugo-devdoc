@@ -1,4 +1,4 @@
-baseURL = "https://naoyamaguchi.github.io/"
+baseURL = "https://naoyamaguchi.github.io/hugo-devdoc"
 languageCode = "en-us"
 title = "Home"
 enableGitInfo = true

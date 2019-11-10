@@ -1,8 +1,37 @@
 {{ partial "head.html" . }}
-{{ partial "header.html" . }}
 
+<!-- codelab header -->
+<nav id="navbar" class="bd-navbar navbar codelab-navbar has-shadow is-spaced is-fixed-top">
+  <div class="container">
+    <div class="navbar-brand">
 
-<section class="container doc-container">
+      <div class="navbar-start is-hidden-touch navbar-item">
+        <a class="navbar-item codelab-navbar-item" href="/codelab">
+          <i class="fas fa-arrow-left"></i>
+        </a>
+        <h2 class="title is-4">
+          {{ .Title }}
+        </h2>
+      </div>
+
+      <div class="navbar-start is-hidden-desktop navbar-item">
+
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+
+        <h2 class="title is-4">
+            {{ .Title }} {{ .Params.shorttitle }}
+        </h2>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- <section class="container doc-container">
   <article class="columns is-mobile is-variable is-6">
 
     <aside class="column doc-sectionnav">
@@ -47,7 +76,58 @@
     </article>
 
   </article>
-</section>
+</section> -->
 
+<!-- codelab sections-->
+<section class="container codelab-section" id="codelab">
+  <article class="columns is-mobile is-variable is-6">
+
+    <aside class="column codelab-stepnav is-12-mobile is-12-tablet is-4-desktop is-4-fullhd">
+      <nav class="codelab-stepnav-inner">
+        <div class="content">
+
+          <!-- card -->
+          <div class="card codelab-stepnav-card card-equal-height">
+            <div class="card-content">
+              vsdvsvsd
+            </div>
+          </div>
+
+          <!-- card -->
+          <div class="card codelab-stepnav-card card-equal-height">
+            <div class="card-content">
+              KMBFLKFKB
+            </div>
+          </div>
+
+          <!-- card -->
+          <div class="card codelab-stepnav-card card-equal-height">
+            <div class="card-content">
+              KMBFLKFKB
+            </div>
+          </div>
+
+        </div>
+      </nav>
+    </aside>
+
+
+    <article class="column codelab-article is-12-mobile is-12-tablet is-three-quarters-desktop is-three-quarters-fullhd">
+      <div class="content">
+        <div class="card codelab-article-card card-equal-height">
+          <div class="card-content">
+            {{ .Content }}
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <aside class="controls">
+      <button class="button codelab-back-button">Normal</button>
+      <button class="button is-primary codelab-next-button">Normal</button>
+    </aside>
+
+  </article>
+</section>
 
 {{ partial "footer.html" . }}

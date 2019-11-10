@@ -34,8 +34,9 @@
   </div>
 </section>
 
+
 <!-- codelab section -->
-<section class="section codelab-section" id="codelab">
+<!-- <section class="section codelab-section" id="codelab">
   <div class="codelab-title">Codelab</div>
   <p class="codelab-subtitle">Check the details of codelab.</p>
 
@@ -58,12 +59,8 @@
         <div class="select is-rounded is-primary">
           <select>
             <option value="" style="display: none;">Filter by Level</option>
-            <!-- <option>Low</option>
-            <option>Mid</option>
-            <option>Hight</option>
-            <option>Mania</option> -->
-            {{ range $cat, $num := where .Site.Taxonomies.level "Section" "codelab" }}
-              <option>{{ $cat }}</span>
+            {{ range $lev, $num := where .Site.Taxonomies.level "Section" "codelab" }}
+              <option>{{ $lev }}</span>
             {{ end }}
           </select>
         </div>
@@ -119,7 +116,93 @@
 
     </div>
   </div>
+</section> -->
+
+<!-- codelab section -->
+<section class="section codelab-list-section" id="codelab">
+  <div class="codelab-title">Codelab</div>
+  <p class="codelab-subtitle">Check the details of codelab.</p>
+
+
+  <div class="container codelab-filters">
+    <div class="columns is-mobile is-multiline">
+
+      <div class="column is-6-mobile is-6-tablet is-3-desktop is-3-fullhd">
+        <div class="select is-rounded is-primary">
+          <select onChange="search(this.value)">
+            <option value="" style="display: none;">Filter by category</option>
+            {{ range $cat, $num := where .Site.Taxonomies.categories "Section" "codelab" }}
+              <option>{{ $cat }}</span>
+            {{ end }}
+          </select>
+        </div>
+      </div>
+
+      <div class="column is-6-mobile is-6-tablet is-3-desktop is-3-fullhd">
+        <div class="select is-rounded is-primary">
+          <select>
+            <option value="" style="display: none;">Filter by Level</option>
+            {{ range $lev, $num := where .Site.Taxonomies.level "Section" "codelab" }}
+              <option>{{ $lev }}</span>
+            {{ end }}
+          </select>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="columns is-mobile is-multiline">
+
+      {{ range where .Site.Pages "Section" "codelab" }}
+        {{ range first 10 (.Pages.ByWeight) }}
+
+          {{ with .Params.categories }}
+          <div class="column is-12-mobile is-6-tablet is-4-desktop is-4-fullhd cat-filter" cat="{{ delimit . "," }}">
+          {{end}}
+            <a href="{{ .Permalink }}">
+              <div class="card card-equal-height">
+                <div class="card-content">
+
+                    <div class="media">
+                      <div class="media-left">
+                        <figure class="image is-48x48">
+                          {{ with .Params.thumbnail }}
+                            <img src="{{ . }}" alt="codelab icon">
+                          {{end}}
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <p class="subtitle is-6">{{ .Title }}</p>
+                      </div>
+                    </div>
+
+                  <div class="codelab-card-duration">
+                    <span>Level: {{ .Params.level }}</span>
+                    <span>Updated: {{ .PublishDate.Format "2006/01/02" }}</span>
+                  </div>
+
+                  <div class="codelab-card-footer">
+                    {{ range first 5 (.Param "categories") }}
+                      <span class="tag is-primary is-light is-rounded">{{.}}</span>
+                    {{ end }}
+                  </div>
+
+                </div>
+              </div>
+            </a>
+          </div>
+
+        {{ end }}
+      {{ end }}
+
+
+    </div>
+  </div>
 </section>
+
 
 
 {{ partial "footer.html" . }}

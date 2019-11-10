@@ -7,7 +7,12 @@ categories:
   - a
 tags:
   - service_a
-weight: 1
+weight: 5
+menu:
+  sidemenu:
+      identifier: 'service_a/specification'
+      parent: 'Service A'
+      weight: 20
 ---
 
 # Specification

@@ -8,7 +8,17 @@ categories:
 tags:
   - service_a
 weight: 1
+menu:
+  sidemenu:
+    identifier: 'service_a/faq'
+    parent: 'Service A'
+    weight: 60
 ---
 
 # FAQ
 Hello FAQ
+
+vxvd
+
+
+bdfbdfb

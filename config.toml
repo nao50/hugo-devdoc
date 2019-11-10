@@ -1,8 +1,11 @@
-baseURL = "http://example.org/"
+baseURL = "http://localhost:1313"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Home"
 enableGitInfo = true
-
+pygmentsCodeFences = true
 [taxonomies]
   category = "categories"
   level = "level"
+[blackfriday]
+  fractions = false
+

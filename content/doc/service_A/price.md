@@ -8,6 +8,11 @@ categories:
 tags:
   - service_a
 weight: 1
+menu:
+  sidemenu:
+      identifier: 'service_a/price'
+      parent: 'Service A'
+      weight: 40
 ---
 
 # Price

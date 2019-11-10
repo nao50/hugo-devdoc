@@ -1,3 +1,6 @@
+'use strict';
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 // TOP navbar menu
 document.addEventListener('DOMContentLoaded', () => {
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
@@ -13,11 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
 // 20191031 bulma site's js
 document.addEventListener('DOMContentLoaded', () => {
   // Cookies
-  // var cookieBookModalName = 'bulma_closed_book_modal';
+  var cookieBookModalName = 'bulma_closed_book_modal';
   // var cookieBookModal = Cookies.getJSON(cookieBookModalName) || false;
 
   // Sidebar links
@@ -26,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if ($categories.length > 0) {
     $categories.forEach(function (el) {
       var toggle_el = el.querySelector('.bd-category-toggle');
-
       toggle_el.addEventListener('click', function (event) {
         // closeCategories(el);
         el.classList.toggle('is-active');
@@ -34,14 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function closeCategories(current_el) {
-    $categories.forEach(function (el) {
-      if (current_el == el) {
-        return;
-      }
-      el.classList.remove('is-active');
-    });
-  }
+
+  // function closeCategories(current_el) {
+  //   $categories.forEach(function (el) {
+  //     if (current_el == el) {
+  //       return;
+  //     }
+  //     el.classList.remove('is-active');
+  //   });
+  // }
 
   var anchors_ref_el = document.getElementById('anchorsReference');
   var anchors_el = document.getElementById('anchors');
@@ -284,7 +287,8 @@ document.addEventListener('DOMContentLoaded', () => {
   var navbarEl = document.getElementById('navbar');
   var navbarBurger = document.getElementById('navbarBurger');
   var specialShadow = document.getElementById('specialShadow');
-  var NAVBAR_HEIGHT = 52;
+  // var NAVBAR_HEIGHT = 52;
+  var NAVBAR_HEIGHT = 90;
   var THRESHOLD = 160;
   var horizon = NAVBAR_HEIGHT;
   var whereYouStoppedScrolling = 0;
@@ -296,22 +300,24 @@ document.addEventListener('DOMContentLoaded', () => {
   var past_anchors = [];
   anchor_links_el.reverse();
   var trigger_offset = 24; // In pixels
-  var typo_el = document.getElementById('typo');
+  // var typo_el = document.getElementById('typo');
 
   function whenScrolling() {
     if (anchors_ref_el) {
       var bounds = anchors_ref_el.getBoundingClientRect();
       var anchors_height = anchors_el.clientHeight;
-      var typo_bounds = typo_el.getBoundingClientRect();
-      var typo_height = typo_el.clientHeight;
+      // var typo_bounds = typo_el.getBoundingClientRect();
+      // var typo_height = typo_el.clientHeight;
 
-      if (bounds.top < 1 && typo_bounds.top - anchors_height + typo_height > 0) {
-        anchors_el.classList.add('is-pinned');
-      } else {
-        anchors_el.classList.remove('is-pinned');
-      }
+      // if (bounds.top < 1 && typo_bounds.top - anchors_height + typo_height > 0) {
+      //   anchors_el.classList.add('is-pinned');
+      // } else {
+      //   anchors_el.classList.remove('is-pinned');
+      // }
+
 
       anchor_links_el.some(function (el) {
+        console.log('CCCCCCCCC')
         var bounds = el.getBoundingClientRect();
         var href = el.getAttribute('href');
         var key = href.substring(1); // #target -> target
@@ -463,3 +469,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 });
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+// smooth scroll 
+// document.addEventListener('DOMContentLoaded', () => {
+//   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+//     anchor.addEventListener('click', function (e) {
+//       e.preventDefault();
+
+//       document.querySelector(this.getAttribute('href')).scrollIntoView({
+//         block: "start",
+//         behavior: 'smooth'
+//       });
+
+
+//       // document.querySelector(this.getAttribute('href')).scrollTop += 85;
+
+
+//       // var element = document.querySelector(this.getAttribute('href'));
+//       // var headerOffset = 85;
+//     	// var elementPosition = element.getBoundingClientRect().top;
+//       // var offsetPosition = elementPosition - headerOffset;
+      
+//       // window.scrollTo({
+//       //     top: offsetPosition,
+//       //     behavior: "smooth"
+//       // });
+
+//     });
+//   });
+// });
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+// codelab filter
+// document.addEventListener('DOMContentLoaded', () => {
+//   const $cat = Array.prototype.slice.call(document.querySelectorAll('.cat-filter'), 0);
+//   // console.log('$cat:', $cat);
+//   if ($cat.length > 0) {}
+//   // if ($cat.length > 0) {
+//   //   $cat.forEach( el => {
+//   //     el.addEventListener('click', () => {
+//   //       const target = el.dataset.target;
+//   //       const $target = document.getElementById(target);
+//   //       el.classList.toggle('is-active');
+//   //       $target.classList.toggle('is-active');
+//   //     });
+//   //   });
+//   // }
+// });
+

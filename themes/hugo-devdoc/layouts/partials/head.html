@@ -49,13 +49,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.0/js/swiper.min.js"></script>
 
     <!-- rellax.js -->
-    <script src="{{ .Site.BaseURL }}/js/rellax.js"></script>
+    <script src="{{ .Site.BaseURL }}js/rellax.js"></script>
 
     <!-- js -->
-    <script src="{{ .Site.BaseURL }}/js/index.js"></script>
+    <script src="{{ .Site.BaseURL }}js/index.js"></script>
+
+    <!-- smooth-scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0/dist/smooth-scroll.polyfills.min.js"></script>
 
     {{ with .OutputFormats.Get "rss" -}}
         {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
     {{ end -}}
 </head>
+<!-- <body class="has-navbar-fixed-top"> -->
 <body class="has-navbar-fixed-top">

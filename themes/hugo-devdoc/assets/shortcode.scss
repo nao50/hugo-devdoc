@@ -1,0 +1,49 @@
+////////////////////////////////////////////////////////////////////////////////////////////////
+// breadcrumb
+.content ul {
+    margin-left: 0em;
+}
+
+.content li+li {
+    margin-top: 0em;
+}
+
+.last-link {
+    padding: 0 .75em;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////
+// toc
+#TableOfContents {
+    ul {
+        font-size: .875rem;
+        margin-bottom: .5em;
+
+        li ul {
+            margin-left: .7em;
+        }
+    }
+
+    a {
+        color: #4a4a4a;
+    }
+    a:hover {
+        color: $primary;
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////
+// code
+.xCodeBlock_title {
+    display: inline-block;
+    font-size: smaller;
+    border-radius: 0.5em 0.5em 0 0;
+    padding: 0 0.5em;
+    background: gray;
+    color: white;
+}
+.xCodeBlock_code {
+    margin-top: -2px;
+}
+.xCodeBlock_code pre {
+    padding: 0.5em;
+    white-space: pre-wrap;
+}

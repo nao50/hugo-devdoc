@@ -4,6 +4,7 @@ title = "Home"
 enableGitInfo = true
 pygmentsCodeFences = true
 theme = "hugo-devdoc"
+canonifyurls = true
 
 [taxonomies]
   category = "categories"

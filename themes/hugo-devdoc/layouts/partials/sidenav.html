@@ -19,14 +19,9 @@
 </nav> -->
 
 {{- with .TableOfContents }}
-  <!-- <nav id="anchors" class="bd-anchors is-active is-pinned toc"> -->
-    <div id="anchorsReference" class="bd-anchors-reference"></div>
-    <p id="anchors" class="bd-anchors-title">
-      On this page
-    </p>
-    {{ . }}
-    <!-- <ul class="bd-anchors-list">
-      <li class="toc">{{ . }}</li>
-    </ul> -->
-  <!-- </nav> -->
+  <div id="anchorsReference" class="bd-anchors-reference"></div>
+  <p id="anchors" class="bd-anchors-title">
+    On this page
+  </p>
+  {{ . }}
 {{- end }}

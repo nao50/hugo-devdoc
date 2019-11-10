@@ -188,6 +188,68 @@
 
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////
+// pickup product (left) section
+.top-pickup-left-section {
+  .pickup-title {
+    font-size: 40px;
+    letter-spacing: -0.5px;
+    line-height: 52px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+  }
+  .pickup-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 16px 0px 8px 0px;
+    letter-spacing: -0.5px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+  }
+  .button {
+    width: 50%;
+  }
+  .is-256x256 {
+    height: 256px;
+    width: 256px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////
+// pickup product (right) section
+.top-pickup-right-section {
+  background: #ffffff;
+  .pickup-title {
+    font-size: 40px;
+    letter-spacing: -0.5px;
+    line-height: 52px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+  }
+  .pickup-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    margin: 16px 0px 8px 0px;
+    letter-spacing: -0.5px;
+    font-family: Work Sans,Noto Sans JP,Helvetica,Tahoma,Geneva,Arial,sans-serif;
+    font-weight: 300;
+  }
+  .button {
+    width: 50%;
+  }
+  .is-256x256 {
+    height: 256px;
+    width: 256px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 // document section

@@ -36,7 +36,6 @@
                   </nav>
                 </nav>
 
-                <!-- {{ .Content }} -->
                 {{ .Content | replaceRE "(<h[1-9] id=\"([^\"]+)\".+)(</h[1-9]+>)" "${1}&nbsp;<a class=\"h-hash\" href=\"#${2}\">#</a> ${3}" | safeHTML }}
 
               </div>

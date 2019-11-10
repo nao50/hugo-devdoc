@@ -1,8 +1,10 @@
-baseURL = "https://naoyamaguchi.github.io/hugo-devdoc"
+baseURL = "https://naoyamaguchi.github.io/hugo-devdoc/"
 languageCode = "en-us"
 title = "Home"
 enableGitInfo = true
 pygmentsCodeFences = true
+theme = "hugo-devdoc"
+
 [taxonomies]
   category = "categories"
   level = "level"

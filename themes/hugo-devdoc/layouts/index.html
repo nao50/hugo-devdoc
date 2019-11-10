@@ -1,1 +1,346 @@
-<head><meta http-equiv="refresh" content="0; url=/hugo-devdoc/top" /></head>
+<!-- <head><meta http-equiv="refresh" content="0; url=/hugo-devdoc/top" /></head> -->
+{{ partial "head.html" . }}
+{{ partial "header.html" . }}
+
+<!-- title section -->
+<section class="hero is-medium top-title-section">
+  <div class="hero-body">
+    <div class="container">
+      
+      <div class="columns is-mobile is-multiline is-centered">
+
+        {{ range where .Site.Pages "Section" "top" }}
+          {{ range first 1 (.Pages.ByWeight) }}
+
+          <div class="column is-12-mobile is-12-tablet is-6-desktop is-6-fullhd rellax" data-rellax-speed="-1">
+            <h1 class="title intro-title top-title">{{ .Title }}</h1>
+            <p class="subtitle has-text-centered top-subtitle">{{ .Params.subtitle }}</p>
+          </div>
+
+          <div class="column is-12-mobile is-12-tablet is-8-desktop is-8-fullhd rellax" data-rellax-speed="-1">
+            <p class="control has-icons-left">
+              <input class="input is-rounded is-large is-primary" type="text" placeholder="Search docs...">
+              <span class="icon is-large is-left">
+                <i class="fas fa-search"></i>
+              </span>
+            </p>
+          </div>
+
+          {{ end }}
+        {{ end }}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- event section -->
+<section class="hero is-medium top-event-section">    
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide slide1"></div>
+      <div class="swiper-slide slide2"></div>
+      <div class="swiper-slide slide3"></div>
+    </div>
+    
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+<!-- changelog section -->
+<section class="section top-information-section" id="information">
+  <div class="information-title">Information</div>
+  <p class="information-subtitle">Check the details of update information.</p>
+  <p class="information-link">
+    <a href="#contact">
+      Check all updates
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </p>
+
+
+  <div class="container">
+    <div class="columns is-mobile is-multiline is-centered">
+      <div class="column is-12-mobile is-12-tablet is-8-desktop is-8-fullhd">
+        <div id="categories" class="bd-categories">
+          {{ range where .Site.Pages "Section" "changelog" }}
+            {{ range first 3 (.Pages.ByDate.Reverse) }}
+
+            <div class="bd-category changelog-list">
+              <header class="bd-category-header changelog-header">
+                <a class="bd-category-toggle">
+                  <span class="changelog-header-date">{{ .PublishDate.Format "2006/01/02" }}</span>
+                  <span class="icon">
+                    <i class="fas fa-chevron-down"></i>
+                  </span>
+                </a>
+                <div class="changelog-header-inner">
+                  {{ .Title }}
+                </div>
+              </header>
+    
+              <ul class="bd-category-list">
+                <li>
+                  <div>{{ .Content }}</div>
+                </li>
+              </ul>
+            </div>
+              
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div> 
+  </div>
+</section>
+
+<!-- pickup product (left) section -->
+<section class="section top-pickup-left-section" id="top-pickup-left">
+  <div class="container">
+    <div class="columns is-mobile is-multiline is-centered">
+      {{ range where .Site.Pages "Section" "doc" }}
+      {{ range first 1 (where .Sections.ByWeight "Params.title" "Service B") }}
+      <div class="column is-12-mobile is-12-tablet is-6-desktop is-6-fullhd is-centered">  
+        <figure class="image is-256x256">
+          {{ with .Params.thumbnail }}
+            <img class="is-rounded" src="{{ . }}" alt="Service icon">
+          {{end}}
+        </figure>
+      </div>
+      <div class="column is-12-mobile is-12-tablet is-6-desktop is-6-fullhd has-text-centered">
+        <div class="pickup-title">{{ .Title }}</div>
+        <p class="pickup-subtitle">{{ .Params.description }}</p>
+        {{with .Params.url }}
+          <a href="{{ . | urlize | relURL }}"><button class="button is-danger is-rounded">Check detail!</button></a>
+        {{end}}
+      </div>
+      {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- pickup product (right) section -->
+<section class="section top-pickup-right-section" id="top-pickup-right">
+  <div class="container">
+    <div class="columns is-mobile is-multiline is-centered">
+      {{ range where .Site.Pages "Section" "doc" }}
+      {{ range first 1 (.Sections.ByWeight) }}
+      <div class="column is-12-mobile is-12-tablet is-6-desktop is-6-fullhd has-text-centered">
+        <div class="pickup-title">{{ .Title }}</div>
+        <p class="pickup-subtitle">{{ .Params.description }}</p>
+        {{with .Params.url }}
+          <a href="{{ . | urlize | relURL }}"><button class="button is-danger">Check detail!</button></a>
+        {{end}}
+      </div>
+      <div class="column is-12-mobile is-12-tablet is-6-desktop is-6-fullhd is-centered">
+        <figure class="image is-256x256">
+          {{ with .Params.thumbnail }}
+            <img class="" src="{{ . }}" alt="Service icon">
+          {{end}}
+        </figure>
+      </div>
+      {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+
+
+<!-- feature section -->
+<!-- <section class="section top-feature-section" id="feature">
+  <div class="feature-title">Feature</div>
+  <p class="feature-subtitle">この商品の特徴を活かしてあなたの生活を豊かにします</p>
+  <p class="feature-link">
+    <a href="#contact">
+      この特徴について問い合わせる
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </p>
+
+  <div class="container">
+    <div class="columns">
+      {{ range where .Site.Pages "Section" "features" }}
+        {{ range first 3 (.Pages.ByWeight) }}
+          <div class="column animated bounce">
+
+              <div class="card card-equal-height rellax" data-rellax-speed="0">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    {{ with .Params.image }}
+                      <img src="{{ . }}" alt="Features image">
+                    {{end}}
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <p class="title has-text-centered">{{ .Title }}</p>
+                  <p class="subtitle has-text-centered">{{ .Params.subtitle }}</p>
+                  <div class="content">
+                    <p>{{ .Params.description }}</p>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section> -->
+
+
+<!-- component section -->
+<!-- <section class="section is-small top-component-section" id="casestudy">
+  <div class="component-title">Casestudy</div>
+  <p class="component-subtitle">この商品はたくさん利用されています</p>
+  <p class="component-link">
+    <a href="#contact">
+      この事例について問い合わせる
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </p>
+
+  <div class="container">
+    <div class="columns">
+      {{ range where .Site.Pages "Section" "casestudys" }}
+        {{ range first 3 (.Pages.ByWeight) }}
+
+        <div class="column is-12-mobile is-12-tablet is-4-desktop is-4-fullhd　animated bounce">
+          <div class="card card-equal-height has-text-centered">
+            <div class="card-image">
+              <figure class="image-circle">
+                {{ with .Params.image }}
+                  <img src="{{ . }}" alt="Features image">
+                {{end}}
+              </figure>
+            </div>
+
+            <div class="card-content">
+              <p class="title has-text-dark is-4">{{ .Params.company }}</p>
+              <p class="subtitle has-text-dark is-5">{{ .Title }}</p>
+              <p>{{ .Params.description }}</p>
+
+              <a class="button is-primary is-outlined is-fullwidth contact-button" href="#contact">Contact</a>
+            </div>
+          </div>
+      </div>
+
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+
+
+</section> -->
+
+
+<!-- document section -->
+<section class="section top-document-section" id="document">
+  <div class="document-title">Document</div>
+  <p class="document-subtitle">Check the details of document.</p>
+  <p class="document-link">
+    <a href="#contact">
+        Check all documents
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </p>
+
+  <div class="container">
+    <div class="columns is-mobile is-multiline">
+      {{ range where .Site.Pages "Section" "doc" }}
+        {{ range first 20 (.Sections.ByWeight) }}
+          <div class="column is-12-mobile is-12-tablet is-4-desktop is-4-fullhd animated bounce">
+            {{with .Params.url }}
+            <a href="{{ . | urlize | relURL }}">
+            {{end}}
+              <div class="card card-equal-height">
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-left">
+                      <figure class="image is-96x96">
+                        {{ with .Params.image }}
+                        <img src="{{ . }}" alt="Service icon">
+                        {{end}}
+                      </figure>
+                    </div>
+                    <div class="media-content">
+                      {{ .Title }} <br>
+                      {{ .Params.subtitle }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- codelab section -->
+<section class="section top-codelab-section" id="top-codelab">
+  <div class="codelab-title">Codelab</div>
+  <p class="codelab-subtitle">Check the details of codelab.</p>
+  <p class="codelab-link">
+    <a href="/codelab/">
+        Check all codelabs
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </p>
+
+  <div class="container">
+    <div class="columns is-mobile is-multiline">
+
+      {{ range where .Site.Pages "Section" "codelab" }}
+        {{ range first 10 (.Pages.ByWeight) }}
+
+          <div class="column is-12-mobile is-6-tablet is-4-desktop is-4-fullhd">
+            <a href="{{ .Permalink }}">
+              <div class="card card-equal-height">
+                <div class="card-content">
+
+                    <div class="media">
+                      <div class="media-left">
+                        <figure class="image is-48x48">
+                          {{ with .Params.thumbnail }}
+                            <img src="{{ . }}" alt="codelab icon">
+                          {{end}}
+                        </figure>
+                      </div>
+                      <div class="media-content">
+                        <p class="subtitle is-6">{{ .Title }}</p>
+                      </div>
+                    </div>
+
+                  <div class="codelab-card-duration">
+                    <span>Level: {{ .Params.level }}</span>
+                    <span>Updated: {{ .PublishDate.Format "2006/01/02" }}</span>
+                  </div>
+
+                  <div class="codelab-card-footer">
+                    {{ range .Param "categories" }}
+                      <span class="tag is-primary is-light is-rounded">{{.}}</span>
+                    {{ end }}
+                  </div>
+
+                </div>
+              </div>
+            </a>
+          </div>
+
+        {{ end }}
+      {{ end }}
+
+
+    </div>
+  </div>
+</section>
+
+
+{{ partial "footer.html" . }}

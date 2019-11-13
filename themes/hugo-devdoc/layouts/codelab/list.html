@@ -129,19 +129,22 @@
 
       <div class="column is-6-mobile is-6-tablet is-3-desktop is-3-fullhd">
         <div class="select is-rounded is-primary">
-          <select onChange="search(this.value)">
-            <option value="" style="display: none;">Filter by category</option>
+          <select onChange="filterByCategory(this.value)">
+              <option value="" style="display: none;">Filter by category</option>
+              <option value="" >All</option>
             {{ range $cat, $num := where .Site.Taxonomies.categories "Section" "codelab" }}
               <option>{{ $cat }}</span>
             {{ end }}
           </select>
         </div>
       </div>
+      
 
       <div class="column is-6-mobile is-6-tablet is-3-desktop is-3-fullhd">
         <div class="select is-rounded is-primary">
-          <select>
+          <select onChange="filterByLevel(this.value)">
             <option value="" style="display: none;">Filter by Level</option>
+            <option value="" >All</option>
             {{ range $lev, $num := where .Site.Taxonomies.level "Section" "codelab" }}
               <option>{{ $lev }}</span>
             {{ end }}
@@ -159,8 +162,9 @@
       {{ range where .Site.Pages "Section" "codelab" }}
         {{ range first 10 (.Pages.ByWeight) }}
 
-          {{ with .Params.categories }}
-          <div class="column is-12-mobile is-6-tablet is-4-desktop is-4-fullhd cat-filter" cat="{{ delimit . "," }}">
+          {{ $l := .Params.level }}
+          {{ with $c := .Params.categories }}
+          <div class="column is-12-mobile is-6-tablet is-4-desktop is-4-fullhd cat-filter lev-filter" cat="{{ delimit $c "," }}" lev="{{ $l }}">
           {{end}}
             <a href="{{ .Permalink }}">
               <div class="card card-equal-height">

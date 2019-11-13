@@ -33,6 +33,10 @@
     {{ $styles2 := resources.Get "bulma-custom.scss" | resources.ToCSS | resources.Minify | resources.Fingerprint }}
     <link rel="stylesheet" href="{{ $styles2.RelPermalink }}">
 
+    <!-- izmir css -->
+    {{ $styles3 := resources.Get "izmir.min.css" | resources.Minify | resources.Fingerprint }}
+    <link rel="stylesheet" href="{{ $styles3.RelPermalink }}">
+
     <!-- font awesome -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">

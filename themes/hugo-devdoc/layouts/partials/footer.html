@@ -77,18 +77,73 @@
 </script>
 
 <script>
-  function search(query) {
+  // el.classList.add('animated', 'bounce');
+
+  // filter categories
+  function filterByCategory(query) {
     query = query.trim();
-    // console.log('$query:', query);
     const $catfil = Array.prototype.slice.call(document.querySelectorAll('.cat-filter'), 0);
     if ($catfil.length > 0) {
-      $catfil.forEach( el => {
+      $catfil.forEach( (el, index) => {
         cat = el.getAttribute('cat')
         var result = cat.split(',');
-        // console.log( 'result: ', result );
+        if (!query) {
+          if (el.classList.contains('lev-hidden')) {
+            el.classList.remove('cat-hidden');
+          } else {
+            el.classList.remove('is-hidden', 'cat-hidden');
+          }
+        } else {
+          if (result.includes(query)) {
+            if (el.classList.contains('lev-hidden')) {
+              el.classList.remove('cat-hidden');
+            } else {
+              el.classList.remove('is-hidden', 'cat-hidden');
+            }
+          } else {
+            if (el.classList.contains('lev-hidden')) {
+              el.classList.add('cat-hidden');
+            } else {
+              el.classList.add('is-hidden', 'cat-hidden');
+            }
+          }
+        }
+        // el.classList.remove('animated', 'bounce');
       });
     }
   }
+  // filter level
+  function filterByLevel(query) {
+    query = query.trim();
+    const $levfil = Array.prototype.slice.call(document.querySelectorAll('.lev-filter'), 0);
+    if ($levfil.length > 0) {
+      $levfil.forEach( (el, index) => {
+        lev = el.getAttribute('lev')
+        if (!query) {
+          if (el.classList.contains('cat-hidden')) {
+            el.classList.remove('lev-hidden');
+          } else {
+            el.classList.remove('is-hidden', 'lev-hidden');
+          }
+        } else {
+          if (lev === query) {
+            if (el.classList.contains('cat-hidden')) {
+              el.classList.remove('lev-hidden');
+            } else {
+              el.classList.remove('is-hidden', 'lev-hidden');
+            }
+          } else {
+            if (el.classList.contains('cat-hidden')) {
+              el.classList.add('lev-hidden');
+            } else {
+              el.classList.add('is-hidden', 'lev-hidden');
+            }
+          }
+        }
+      });
+    }
+  }
+
 </script>
 
 <script>

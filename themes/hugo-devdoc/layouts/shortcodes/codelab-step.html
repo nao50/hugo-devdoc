@@ -1,0 +1,3 @@
+<codelab-step style="color:red;" label="{{ .Get "label" }}" {{ with .Get "duration" }} duration="{{ . }}"{{ end }} {{ $selecte := default "" (.Get "selecte") }} {{ $selecte }}>
+  {{ .Inner | markdownify }}
+</codelab-step>

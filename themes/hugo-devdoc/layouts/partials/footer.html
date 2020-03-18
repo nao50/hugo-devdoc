@@ -147,22 +147,14 @@
 </script>
 
 <script>
-  // var path = location.pathname.split('/');
-  // var $p2 = document.querySelectorAll('.' + path[2]);
-  // if ($p2.length > 0) {
-  //   $p2.forEach( el => {
-  //     el.classList.add('is-active');
-  //   });
-  // }
-
-  // console.log('hash:', location.hash);
-  // var $p3 = document.querySelectorAll('.' + path[3]);
-  // if ($p3.length > 0) {
-  //   $p3.forEach( el => {
-  //     el.classList.add('is-active');
-  //     el.classList.add('is-current');
-  //   });
-  // }
+  const router = new Router();
+  router.get('/', function(req) {
+    console.log('req.path: ', req.path);
+  });
+  router.get('/hugo-devdoc/', function(req) {
+    console.log('req.path: ', req.path);
+  });
+  router.init();
 </script>
 
 </body>

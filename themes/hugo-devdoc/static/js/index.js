@@ -2,6 +2,17 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // TOP navbar menu
+window.addEventListener('beforeunload', function(e) {
+  console.log("ページ繊維！")
+  // e.returnValue = '保存忘れはありませんか？';
+}, false);
+
+window.addEventListener('DOMContentLoaded', function() {
+  console.log('AVDDSFDFSD');
+})
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+// TOP navbar menu
 document.addEventListener('DOMContentLoaded', () => {
   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
   if ($navbarBurgers.length > 0) {

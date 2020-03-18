@@ -11,39 +11,21 @@ categories:
 weight: 1
 ---
 
+{{<codelab-step label="Overview" duration="1:00" selecte="selected">}}
+## この発射ボタンを押さないでください。
+
+> ssds  
+> sdf
+
+`adcs` dvsdv `vs` .  
+vsd
+
+{{</codelab-step>}}
+
+{{<codelab-step label="Start" duration="1:00">}}
 # dvdvdf
 
-> ssds
-> sdfsdcsdcsd
+> ssds  
+> sdf
 
-```python
-import numpy
-
-a = 1
-```
-
-## dvdvdf
-
-vdv
-
-vdvdfvdfvd
-
-vdfvd
-
-
-## dvdvdf
-
-```python
-import numpy
-
-a = 1
-```
-
-
-## dvdvdf
-
-```python
-import numpy
-
-a = 1
-```
+{{</codelab-step>}}
